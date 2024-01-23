@@ -9,25 +9,35 @@ import TripsList from "./components/TripsList";
 import TripItem from "./components/TripItem";
 import TripDetail from "./components/TripDetail";
 
+// const router = createBrowserRouter([
+//   {
+//     path: "/",
+//     element: (
+//       <div>
+//         <Nav />
+//         <Home />
+//       </div>
+//     ),
+//   },
+//   {
+//     path: "/Trips",
+//     element: (
+//       <div>
+//         <Nav />
+//         <TripsList />
+//       </div>
+//     ),
+//   },
+// ]);
 const router = createBrowserRouter([
   {
     path: "/",
-    element: (
-      <div>
-        <Nav />
-        <Home />
-      </div>
-    ),
-  },
-  {
-    path: "/Trips",
-    element: (
-      <div>
-        <Nav />
-        <TripsList />
-        <TripDetail />
-      </div>
-    ),
+    element: <Nav />,
+    children: [
+      { path: "/", element: <App /> },
+      { path: "/Trips", element: <TripsList /> },
+      { path: "/Trips/:id", element: <TripDetail /> },
+    ],
   },
 ]);
 
